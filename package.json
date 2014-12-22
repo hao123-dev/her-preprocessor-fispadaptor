@@ -1,0 +1,18 @@
+{
+    "name": "her-preprocessor-fispadaptor",
+    "version": "0.0.2",
+    "description": "her预处理器,用于兼容fisp",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/hao123-dev/her-preprocessor-fispadaptor.git"
+    },
+    "keywords": [
+        "her"
+    ],
+    "author": "https://github.com/hao123-dev",
+    "license": "MIT"
+}
