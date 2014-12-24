@@ -1,6 +1,6 @@
 {
     "name": "her-preprocessor-fispadaptor",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "her预处理器,用于兼容fisp",
     "main": "index.js",
     "scripts": {
@@ -13,6 +13,13 @@
     "keywords": [
         "her"
     ],
-    "author": "https://github.com/hao123-dev",
-    "license": "MIT"
+    "author": {
+        "name": "https://github.com/hao123-dev"
+    },
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/hao123-dev/her-preprocessor-fispadaptor/issues"
+    },
+    "readme": "ERROR: No README data found!",
+    "homepage": "https://github.com/hao123-dev/her-preprocessor-fispadaptor"
 }

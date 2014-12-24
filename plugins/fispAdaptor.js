@@ -11,7 +11,16 @@ function setDelimiter() {
 
 function widgetWrapper(content, file) {
 
-    if (file.subdirname.split('/')[1] === 'widget' || file.extras.isFispWidget) {
+    var hasFunctionTag = false;
+    content = tagFilter.filterBlock(content, 'function', smarty_left_delimiter, smarty_right_delimiter,
+        function(outter, attr, inner, content) {
+            hasFunctionTag = true;
+
+            return outter;
+        }
+    );
+
+    if (!hasFunctionTag && file.subdirname.split('/')[1] === 'widget' || file.extras.isFispWidget) {
         setDelimiter();
         //console.log(content);
         content = smarty_left_delimiter +
