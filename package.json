@@ -1,6 +1,6 @@
 {
     "name": "her-preprocessor-fispadaptor",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "her预处理器,用于兼容fisp",
     "main": "index.js",
     "scripts": {
