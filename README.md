@@ -1,13 +1,9 @@
-her-preprocessor-fispadaptor
-
-一个兼容fisp项目的插件
-
-============================
 ##使用方法##
 ###1.安装插件###
 ```
 npm install her-preprocessor-fispadaptor -g
 ```
+
 ###2.配置fis-conf###
 ```
 fis.config.get('modules.preprocessor.tpl').unshift('fispadaptor')
@@ -30,9 +26,15 @@ fis.config.get('modules.preprocessor.tpl').unshift('fispadaptor')
 
 ###2.替换前端运行时框架###
 
-前端运行时框架在static目录，其中bigpipe.js和amd.js是框架运行必须的代码，需要在`{html}`标签初始化，可以用inline的方式引入，例如：
+前端运行时框架在static目录，其中bigpipe.js和amd.js是框架运行必须的代码，需要在`{html}`标签初始化，可以先inline到lib.js，然后在`{html}`标签引入，例如：
 
+```javascript
+// in lib.js
+__inline('bigpipe.js');
+__inline('amd.js');
+```
 ```smarty
+// in tpl
 {strip}
 {html framework="common:static/lib.js" lang="zh-cn"}
 {head}
@@ -60,9 +62,45 @@ var $ = require('common:static/jquery.js');
 ```
 $ her release -c
 ```
-发布模块。至此你的模块已经可以run起来，你可以继续按下面的步骤就行性能优化。
+发布模块。至此你的模块已经可以run起来，你可以继续按下面的步骤进行性能优化。
+注意：
+`{script}`标签内的js执行是在包含它的pagelet load之后，所以不能在`{script}`使用`documet.write()`，如果一定要使用`documet.write()`，在`{pagelet}`外可以直接写`<script>`标签。`{pagelet}`中的内容都不是同步输出的，不能使用`documet.write()`。
+
 
 ###5.性能优化###
 
+####5.1使用`{pagelet}`将页面分块（[wiki](https://github.com/hao123-dev/her/wiki/03-01.Smarty%E6%A8%A1%E6%9D%BF)）####
 
+`{pagelet}`将页面分块，并收集其中的html、css、js。`{pagelet}`中的内容都通过js渲染。建议将非首屏内容都添加`{pagelet}`，异步渲染。
+
+####5.2 非首屏内容使用bigrender####
+在pagelet加载之前用js阻止，并在需要的时候手动调用pagelet.load()加载pagelet，即可实现bigrender。
+
+依赖bigRender.js、lazy.js和jquery
+```smarty
+{pagelet}
+	...
+	{script on="beforeload"}
+		return !require('common:static/bigRender.js').add(this);
+	{/script}
+	...
+{/pagelet}
+```
+
+####5.3 除框架js之外的所有业务js都使用require.defer（[wiki](https://github.com/hao123-dev/her/wiki/03-02.Javascript)）####
+
+require.defer 会将模块的加载推迟到页面 onload 之后，以防止对首屏速度的影响。
+
+###6.高级功能###
+
+####6.1 Quickling局部刷新####
+
+可以使用 BigPipe.fetch(pagelets[, url, cache]) 函数实现Quickling局部刷新。
+
+同时我们也提供了 pageEmulator.js 监听a标签点击实现局部刷新
+```javascript
+require.defer('common:static/pageEmulator.js',function(emulator){
+    emulator.start();
+});
+```
 
