@@ -69,7 +69,7 @@ $ her release -c
 
 ###5.性能优化###
 
-####5.1使用`{pagelet}`将页面分块（[wiki](https://github.com/hao123-dev/her/wiki/03-01.Smarty%E6%A8%A1%E6%9D%BF)）####
+####5.1使用`{pagelet}`将页面分块（[wiki](https://github.com/hao123-fe/her/wiki/03-01.Smarty%E6%A8%A1%E6%9D%BF)）####
 
 `{pagelet}`将页面分块，并收集其中的html、css、js。`{pagelet}`中的内容都通过js渲染。建议将非首屏内容都添加`{pagelet}`，异步渲染。
 
@@ -87,7 +87,7 @@ $ her release -c
 {/pagelet}
 ```
 
-####5.3 除框架js之外的所有业务js都使用require.defer（[wiki](https://github.com/hao123-dev/her/wiki/03-02.Javascript)）####
+####5.3 除框架js之外的所有业务js都使用require.defer（[wiki](https://github.com/hao123-fe/her/wiki/03-02.Javascript)）####
 
 require.defer 会将模块的加载推迟到页面 onload 之后，以防止对首屏速度的影响。
 
