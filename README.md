@@ -13,7 +13,7 @@ fis.config.get('modules.preprocessor.tpl').unshift('fispadaptor')
 
 ###1.替换smarty运行时插件###
 
-下载最新的[Her smarty运行时插件](http://gitlab.baidu.com/hao123-fe/her-smarty-plugin/tree/master)
+下载最新的[Her smarty运行时插件](https://github.com/hao123-fe/her-smarty-plugin/archive/master.zip)
 
 复制plugin目录下所有文件到原fisp的plugin目录，并删除fisp同名的编译插件compiler.require.php、compiler.script.php、compiler.widget.php
 
