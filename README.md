@@ -15,6 +15,8 @@ fis.config.get('modules.preprocessor.tpl').unshift('fispadaptor')
 
 下载最新的[Her smarty运行时插件](https://github.com/hao123-fe/her-runtime/tree/master/dist)
 
+其中plugin目录是smarty运行时插件，javascript目录是前端amd和bigpipe运行时，js_helper是一些有用的业务代码实现(例如bigRender.js)
+
 复制plugin目录下所有文件到原fisp的plugin目录，并删除fisp同名的编译插件compiler.require.php、compiler.script.php、compiler.widget.php
 
 注意：
@@ -26,17 +28,11 @@ fis.config.get('modules.preprocessor.tpl').unshift('fispadaptor')
 
 ###2.替换前端运行时框架###
 
-前端运行时框架在static目录，其中bigpipe.js和amd.js是框架运行必须的代码，需要在`{html}`标签初始化，可以先inline到lib.js，然后在`{html}`标签引入，例如：
-
-```javascript
-// in lib.js
-__inline('bigpipe.js');
-__inline('amd.js');
-```
+前端运行时框架在javascript目录，main.js是框架运行必须的代码，需要在`{html}`标签初始化，例如：
 ```smarty
 // in tpl
 {strip}
-{html framework="common:static/lib.js" lang="zh-cn"}
+{html framework="path/to/main.js" lang="zh-cn"}
 {head}
 ```
 注意：
