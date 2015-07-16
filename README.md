@@ -13,7 +13,7 @@ fis.config.get('modules.preprocessor.tpl').unshift('fispadaptor')
 
 ###1.替换smarty运行时插件###
 
-下载最新的[Her smarty运行时插件](https://github.com/hao123-fe/her-smarty-plugin/archive/master.zip)
+下载最新的[Her smarty运行时插件](https://github.com/hao123-fe/her-runtime/tree/master/dist)
 
 复制plugin目录下所有文件到原fisp的plugin目录，并删除fisp同名的编译插件compiler.require.php、compiler.script.php、compiler.widget.php
 
@@ -69,7 +69,7 @@ $ her release -c
 
 ###5.性能优化###
 
-####5.1使用`{pagelet}`将页面分块（[wiki](https://github.com/hao123-fe/her/wiki/03-01.Smarty%E6%A8%A1%E6%9D%BF)）####
+####5.1使用`{pagelet}`将页面分块（[wiki](https://github.com/hao123-fe/her/wiki/02-01.Smarty%E6%A8%A1%E6%9D%BF)）####
 
 `{pagelet}`将页面分块，并收集其中的html、css、js。`{pagelet}`中的内容都通过js渲染。建议将非首屏内容都添加`{pagelet}`，异步渲染。
 
